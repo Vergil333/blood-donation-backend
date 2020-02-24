@@ -5,9 +5,10 @@ import javax.persistence.Entity
 import javax.persistence.OneToOne
 
 @Entity
-open class User(var name: String,
-                var surname: String,
-                var email: String) : IdBasedEntity<Long>() {
+open class User(var email: String,
+                var password: String,
+                var firstName: String,
+                var lastName: String) : IdBasedEntity<Long>() {
     @OneToOne
     var address: Address? = null
 }
