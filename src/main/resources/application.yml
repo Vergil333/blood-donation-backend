@@ -1,5 +1,28 @@
 spring:
   datasource:
-    username: ${SPRING_DATABASE_USERNAME}
-    password: ${SPRING_DATABASE_PASSWORD}
-    url: ${SPRING_DATABASE_URL}
+    url: jdbc:postgresql://localhost:5432/blood_donation
+    username: demoUSER
+    password: demoPASSWORD
+
+  liquibase:
+    change-log: classpath:/changelogs/changelog-master.yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+request:
+  logging:
+    shouldLog: false # log REST API calls
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG # log sql query
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE # log sql parameters
