@@ -13,8 +13,6 @@ open class SpringSecurityConfig: WebSecurityConfigurerAdapter() {
 
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
-                .withUser("demoUSER").password("{noop}demoPASSWORD").roles("USER")
-                .and()
                 .withUser("adminUSER").password("{noop}adminPASSWORD").roles("ADMIN")
     }
 
@@ -22,8 +20,6 @@ open class SpringSecurityConfig: WebSecurityConfigurerAdapter() {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/donor").authenticated()
-                .antMatchers(HttpMethod.POST, "/donor").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/donor").hasRole("ADMIN")
                 .and().csrf().disable()
     }
