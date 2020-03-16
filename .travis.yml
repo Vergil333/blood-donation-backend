@@ -4,4 +4,6 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database blood_donation;' -c 'create user TESTdemoUSER with encrypted password TESTdemoPASSWORD;' -c 'grant all privileges on database blood_donation to TESTdemoUSER;' -U postgres
+  - psql -c 'create database blood_donation;' -U postgres
+  - psql -c 'create user $JDBC_DATABASE_USERNAME with encrypted password $JDBC_DATABASE_PASSWORD;' -U postgres
+  - psql -c 'grant all privileges on database blood_donation to $JDBC_DATABASE_USERNAME;' -U postgres
