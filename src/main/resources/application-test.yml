@@ -1,0 +1,7 @@
+spring:
+  liquibase:
+    drop-first: true # re-create database
+
+request:
+  logging:
+    shouldLog: true # log REST API calls
