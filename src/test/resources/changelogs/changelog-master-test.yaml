@@ -2,8 +2,4 @@ databaseChangeLog:
   - include:
       context: main
       relativeToChangeLogFile: true
-      file: changelog-id-based-table.sql
-  - include:
-      context: main
-      relativeToChangeLogFile: true
       file: changelog-0001.sql
