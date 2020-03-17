@@ -4,4 +4,4 @@ services:
   - docker
 
 before_script:
-  - docker run --name blood_donation -e POSTGRES_USER=$JDBC_DATABASE_USERNAME -e POSTGRES_DB=blood_donation -e POSTGRES_PASSWORD=TESTdemoPASSWORD -p 5432:5432 -d postgres
+  - docker run --name blood_donation -e POSTGRES_USER=$JDBC_DATABASE_USERNAME -e POSTGRES_DB=blood_donation -e POSTGRES_PASSWORD=$JDBC_DATABASE_PASSWORD -p 5432:5432 -d postgres
