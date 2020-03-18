@@ -9,6 +9,6 @@ Database of donors
 
 ## Create connection to local DB
 In your IDE (or system) add these environment variables:<br>
-- JDBC_DATABASE_USERNAME admin<br>
-- JDBC_DATABASE_PASSWORD admin<br>
+- JDBC_DATABASE_USERNAME demoUSER<br>
+- JDBC_DATABASE_PASSWORD demoPASSWORD<br>
 - JDBC_DATABASE_URL jdbc:postgresql://localhost:5432/blood_donation
