@@ -7,9 +7,18 @@ before_script:
   - docker run --name blood_donation -e POSTGRES_USER=$JDBC_DATABASE_USERNAME -e POSTGRES_DB=blood_donation -e POSTGRES_PASSWORD=$JDBC_DATABASE_PASSWORD -p 5432:5432 -d postgres
 
 deploy:
-    provider: heroku
-    api_key: $HEROKU_API_KEY
-    app:
-      production: machava-backend
-      staging: machava-backend-staging
-      development: machava-backend-dev
+    - provider: heroku
+      api_key: $HEROKU_API_KEY
+      app: machava-backend
+      on:
+        branch: master
+    - provider: heroku
+      api_key: $HEROKU_API_KEY
+      app: machava-backend-staging
+      on:
+        branch: staging
+    - provider: heroku
+      api_key: $HEROKU_API_KEY
+      app: machava-backend-dev
+      on:
+        branch: dev
