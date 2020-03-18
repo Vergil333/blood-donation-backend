@@ -9,4 +9,7 @@ before_script:
 deploy:
     provider: heroku
     api_key: $HEROKU_API_KEY
-    app: machava-backend
+    app:
+      production: machava-backend
+      staging: machava-backend-staging
+      development: machava-backend-dev
