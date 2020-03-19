@@ -11,9 +11,9 @@ class DonorController {
     lateinit var donorService: DonorService
 
     @GetMapping
-    fun getDonor(@RequestParam("email") email: String) = donorService.getDonorByEmail(email)
+    fun getDonor(@RequestParam("email") email: String): DonorView = donorService.getDonorByEmail(email).toDonorView()
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addNewDonor(@RequestBody newDonor: Donor): Donor = donorService.addNewDonor(newDonor)
+    fun addNewDonor(@RequestBody newDonor: Donor): DonorView = donorService.addNewDonor(newDonor).toDonorView()
 }
