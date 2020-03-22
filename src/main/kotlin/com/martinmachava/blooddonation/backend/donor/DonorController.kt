@@ -15,5 +15,5 @@ class DonorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addNewDonor(@RequestBody newDonor: Donor): DonorView = donorService.addNewDonor(newDonor)
+    fun addDonor(@RequestBody donor: Donor): DonorView = donorService.addDonor(donor)
 }

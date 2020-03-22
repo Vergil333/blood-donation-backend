@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 interface DonorService {
     var repository: DonorRepository
 
-    fun addNewDonor(newDonor: Donor): DonorView
+    fun addDonor(donor: Donor): DonorView
 
     fun getDonorByEmail(email: String): DonorView
 
@@ -18,7 +18,7 @@ class DonorServiceImpl: DonorService {
     @Autowired
     override lateinit var repository: DonorRepository
 
-    override fun addNewDonor(newDonor: Donor): DonorView = repository.save(newDonor).toDonorView()
+    override fun addDonor(donor: Donor): DonorView = repository.save(donor).toDonorView()
 
     override fun getDonorByEmail(email: String): DonorView = repository.getDonorByEmail(email).toDonorView()
 
