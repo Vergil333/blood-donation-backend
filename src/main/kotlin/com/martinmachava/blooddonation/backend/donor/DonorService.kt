@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 interface DonorService {
-    var donorRepository: DonorRepository
+    var repository: DonorRepository
 
-    fun addNewDonor(newDonor: Donor): Donor
+    fun addNewDonor(newDonor: Donor): DonorView
 
-    fun getDonorByEmail(email: String): Donor
+    fun getDonorByEmail(email: String): DonorView
 
     fun deleteDonor(donor: Donor)
 }
@@ -16,11 +16,11 @@ interface DonorService {
 @Service
 class DonorServiceImpl: DonorService {
     @Autowired
-    override lateinit var donorRepository: DonorRepository
+    override lateinit var repository: DonorRepository
 
-    override fun addNewDonor(newDonor: Donor): Donor = donorRepository.save(newDonor)
+    override fun addNewDonor(newDonor: Donor): DonorView = repository.save(newDonor).toDonorView()
 
-    override fun getDonorByEmail(email: String): Donor = donorRepository.getDonorByEmail(email)
+    override fun getDonorByEmail(email: String): DonorView = repository.getDonorByEmail(email).toDonorView()
 
-    override fun deleteDonor(donor: Donor) = donorRepository.delete(donor)
+    override fun deleteDonor(donor: Donor) = repository.delete(donor)
 }
