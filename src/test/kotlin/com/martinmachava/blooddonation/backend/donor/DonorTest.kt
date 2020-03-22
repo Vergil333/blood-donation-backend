@@ -1,24 +1,70 @@
 package com.martinmachava.blooddonation.backend.donor
 
-import org.hibernate.testing.junit4.BaseCoreFunctionalTestCase
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
-internal class DonorTest: BaseCoreFunctionalTestCase() {
+const val DONOR_EMAIL: String = "jozko.furik@email.com"
+const val DONOR_PASSWORD: String = "testPASSWORD"
+const val DONOR_FIRST_NAME: String = "Jožko"
+const val DONOR_LAST_NAME: String = "Fúrik"
 
-    //TEST DONOR ENTITY
-    /*@Test
-    fun createValidUser_saveUser_userSaved() {
-        doInHibernate(Supplier { sessionFactory() }, Consumer { session: Session ->
-            val expectedUser = User(
-                    "test.user@email.com",
-                    "testPASSWORD",
-                    "testFirstName",
-                    "testLastName")
-            session.persist(expectedUser)
+private val DONOR: Donor = Donor(
+        DONOR_EMAIL,
+        DONOR_PASSWORD,
+        DONOR_FIRST_NAME,
+        DONOR_LAST_NAME
+)
 
-            val actualUser: User = session.find(User::class.java, expectedUser.id)
-            session.refresh(actualUser)
+private val ADDRESS: Address = Address(
+        DONOR,
+        ADDRESS_COUNTRY_CODE,
+        ADDRESS_POSTAL_CODE,
+        ADDRESS_TOWN,
+        ADDRESS_HOUSE_NUMBER
+)
 
-            assertThat(actualUser).isEqualTo(expectedUser)})
-    }*/
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class DonorTest {
+
+    @Nested
+    inner class DonorCreation {
+        val donor: Donor = DONOR
+
+        @Nested
+        inner class InitialFieldsAreCreated {
+            @Test
+            fun `test Email`() {
+                assertThat(donor.email).isEqualTo(DONOR_EMAIL)
+            }
+            @Test
+            fun `test Password`() {
+                assertThat(donor.password).isEqualTo(DONOR_PASSWORD)
+            }
+            @Test
+            fun `test First Name`() {
+                assertThat(donor.firstName).isEqualTo(DONOR_FIRST_NAME)
+            }
+            @Test
+            fun `test Last Name`() {
+                assertThat(donor.lastName).isEqualTo(DONOR_LAST_NAME)
+            }
+            @Test
+            fun `test Address`() {
+                assertThat(donor.address).isNull()
+            }
+        }
+
+        @Nested
+        inner class AddressIsAdded {
+            @Test
+            fun `add and test Address`() {
+                donor.address = ADDRESS
+                assertThat(donor.address).isEqualTo(ADDRESS)
+            }
+        }
+
+    }
 
 }
