@@ -1,4 +1,4 @@
-package com.martinmachava.blooddonation.backend.config
+package com.martinmachava.blooddonation.backend.configs
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component

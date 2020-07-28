@@ -1,4 +1,4 @@
-package com.martinmachava.blooddonation.backend.donor
+package com.martinmachava.blooddonation.backend.donors
 
 import com.martinmachava.blooddonation.backend.persistence.entities.IdBasedEntity
 import javax.persistence.Column

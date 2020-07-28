@@ -1,7 +1,11 @@
-package com.martinmachava.blooddonation.backend.donor
+package com.martinmachava.blooddonation.backend.donors
 
 import com.martinmachava.blooddonation.backend.persistence.entities.IdBasedEntity
-import javax.persistence.*
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.OneToOne
 
 @Entity
 data class Donor(

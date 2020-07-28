@@ -1,4 +1,4 @@
-package com.martinmachava.blooddonation.backend.donor
+package com.martinmachava.blooddonation.backend.donors
 
 import com.neovisionaries.i18n.CountryCode
 import org.springframework.stereotype.Service

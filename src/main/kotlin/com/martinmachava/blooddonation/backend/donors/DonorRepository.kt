@@ -1,4 +1,4 @@
-package com.martinmachava.blooddonation.backend.donor
+package com.martinmachava.blooddonation.backend.donors
 
 import org.springframework.data.jpa.repository.JpaRepository
 

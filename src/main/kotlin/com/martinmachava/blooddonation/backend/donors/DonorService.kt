@@ -1,4 +1,4 @@
-package com.martinmachava.blooddonation.backend.donor
+package com.martinmachava.blooddonation.backend.donors
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -8,7 +8,9 @@ interface DonorService {
 
     fun addDonor(donor: Donor): DonorView
 
-    fun getDonorByEmail(email: String): DonorView
+    fun getDonorByEmail(email: String): Donor
+
+    fun getDonorViewByEmail(email: String): DonorView
 
     fun deleteDonor(donor: Donor)
 }
@@ -20,7 +22,9 @@ class DonorServiceImpl: DonorService {
 
     override fun addDonor(donor: Donor): DonorView = repository.save(donor).toDonorView()
 
-    override fun getDonorByEmail(email: String): DonorView = repository.getDonorByEmail(email).toDonorView()
+    override fun getDonorByEmail(email: String): Donor = repository.getDonorByEmail(email)
+
+    override fun getDonorViewByEmail(email: String): DonorView = repository.getDonorByEmail(email).toDonorView()
 
     override fun deleteDonor(donor: Donor) = repository.delete(donor)
 }
